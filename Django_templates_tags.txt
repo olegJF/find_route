@@ -1,0 +1,53 @@
+url {% url %}
+
+{% url '$VAR$'%}
+
+=============================
+
+block {% block %} / {% endblock %}
+
+{% block $BLOCK$ %}
+$END$
+{% endblock $BLOCK$%}
+
+==============================
+
+for {% for %} / {% endfor %}
+
+{% for $VAR$ in $COLLECTION$ %}
+$END$
+{% endfor %}
+
+OR
+
+{% for "objects" in "objects_list" %}
+$END$
+{% endfor %}
+
+============================
+
+if {% if %} / {% endif %}
+
+{% if $VAR$ %}
+$END$
+{% elif %}$END$
+{% else %}$END$
+{% endif %}
+
+============================
+
+csrf {% csrf_token %}
+
+{% csrf_token %}$END$
+
+==============================
+@ {{ }}
+{{ $END$ }}
+
+==============================
+
+% {%  %}
+{% $END$ %}
+
+
+
