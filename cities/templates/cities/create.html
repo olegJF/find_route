@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Создание Города{% endblock %}
+
+{% block content %}
+<h1>Создание Города</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form action="" method="post"> {% csrf_token %}
+    {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+    </div>
+</div>
+
+{% endblock %}
