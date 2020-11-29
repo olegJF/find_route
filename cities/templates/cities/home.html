@@ -12,4 +12,10 @@
         {% endfor %}
     </div>
 </div>
+
+<form action="" method="post"> {% csrf_token %}
+  <label for="fname">Город</label><br>
+  <input type="text" id="fname" name="name" ><br>
+  <input type="submit" value="Submit">
+</form>
 {% endblock %}
