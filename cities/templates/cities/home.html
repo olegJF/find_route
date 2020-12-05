@@ -3,15 +3,57 @@
 
 {% block content %}
 <h1>Список городов</h1>
-<div class="row">
-    <div class="col-md">
-        {% for object in objects_list %}
-            <p>
-                <a href="{% url 'cities:detail' pk=object.pk%}">{{object.name}}</a>
-                </p>
+<div class="row ">
+    <div class="col-md-8 mx-auto my-2">
+        <table class="table table-striped">
+        {% for object in page_obj %}
+            <tr>
+                <td>
+                    <a href="{% url 'cities:detail' pk=object.pk%}">{{object.name}}</a>
+                </td>
+                <td>
+                    <a href="{% url 'cities:update' pk=object.pk%}">
+                        <button type="submit" class="btn btn-primary">Редактировать</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'cities:delete' pk=object.pk%}">
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </a>
+                </td>
+            </tr>
+
+
         {% endfor %}
+        </table>
     </div>
 </div>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+        {% if page_obj.has_previous %}
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            </a>
+        {% endif %}
+    </li>
+    {% for page in page_obj.paginator.page_range %}
+        <li class="page-item {% if page == page_obj.number %} active {% endif %} ">
+            <a class="page-link" href="?page={{page}}">
+                {{ page }}
+            </a>
+        </li>
+    {% endfor %}
+    <li class="page-item">
+        {% if page_obj.has_next %}
+      <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+        {% endif %}
+    </li>
+  </ul>
+</nav>
 <div class="row">
     <div class="col-md-4">
         <form action="" method="post"> {% csrf_token %}
