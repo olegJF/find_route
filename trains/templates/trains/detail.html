@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Город{% endblock %}
+
+{% block content %}
+<h1>Город</h1>
+<div class="row">
+    <div class="col-md">
+        <p>Название города: {{object.name}}</p>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <a href="{% url 'cities:home' %}">
+            <button type="button" class="btn btn-light">Назад к списку</button>
+        </a>
+    </div>
+</div>
+{% endblock %}
+
