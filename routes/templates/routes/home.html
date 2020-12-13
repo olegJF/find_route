@@ -5,6 +5,20 @@
 
 {% block content %}
 <h1>Поиск маршрута</h1>
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        {% if routes %}
+            <h3>Маршрут из г. {{ cities.from_city }} в г.{{ cities.to_city }} </h3>
+            {% for route in routes %}
+                <p>Время в пути  {{ route.total_time }}</p>
+                <p>Список поездов по этому маршруту</p>
+                {% for train in route.trains%}
+                    <p> {{ train }}</p>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
 {% url 'find_routes' as action%}
 {% include 'form.html' with button='Найти' action=action%}
 
