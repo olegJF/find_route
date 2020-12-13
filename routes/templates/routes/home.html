@@ -8,13 +8,34 @@
 <div class="row">
     <div class="col-md-8 mx-auto">
         {% if routes %}
-            <h3>Маршрут из г. {{ cities.from_city }} в г.{{ cities.to_city }} </h3>
+            <h3>Маршрут{% if routes|length != 1 %}ы {% endif %}
+                из г. {{ cities.from_city }} в г.{{ cities.to_city }} </h3>
+        <br>
             {% for route in routes %}
-                <p>Время в пути  {{ route.total_time }}</p>
-                <p>Список поездов по этому маршруту</p>
-                {% for train in route.trains%}
-                    <p> {{ train }}</p>
-                {% endfor %}
+
+                {% if forloop.first %}<h4>Самый короткий маршрут</h4> {% endif %}
+                <h5>Время в пути  {{ route.total_time }}</h5>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Список поездов по этому маршруту</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for train in route.trains%}
+                    <tr>
+                      <th scope="row">{{ forloop.counter }}</th>
+                      <td>Поезд {{ train.name }} из г.  {{ train.from_city.name }}
+                          в г.{{ train.to_city.name }} </td>
+
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+        <br><br>
+
             {% endfor %}
         {% endif %}
     </div>
