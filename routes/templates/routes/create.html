@@ -4,6 +4,23 @@
 {% block content %}
 <h1>Создание Маршрута</h1>
 
-{% url 'save_route' as action%}
-{% include 'form.html' with button='Сохранить' action=action%}
+
+<div class="row">
+    <div class="col-md-4">
+        <form action="{% url 'save_route'%}" method="post"> {% csrf_token %}
+            {% for field in form %}
+                <div class="fieldWrapper">
+                    {{ field.errors }}
+                    {{ field }}
+                    {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <br>
+        <button type="submit" class="btn btn-primary"> Сохранить</button>
+        </form>
+    </div>
+</div>
+
 {% endblock %}
