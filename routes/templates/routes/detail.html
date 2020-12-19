@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Маршрут{% endblock %}
+
+{% block content %}
+<h1>Маршрут </h1>
+<div class="row ">
+    <div class="col-md-10 mx-auto my-2">
+        <table class="table table-striped">
+            <tr>
+                <th>Название</th>
+                <th>Откуда</th>
+                <th>Куда</th>
+                <th>Время в пути</th>
+                <th>Список поездов по маршруту</th>
+            </tr>
+            <tr>
+                <td>
+                    {{object.name}}
+                </td>
+                <td>{{object.from_city}}</td>
+                <td>{{object.to_city}}</td>
+                <td>{{object.travel_times}}</td>
+                <td>
+                    {% for train in object.trains.all%}
+                    <p>{{train}}, время в пути {{train.travel_time}}</p>
+                    {% endfor %}
+                </td>
+
+            </tr>
+
+
+        </table>
+    </div>
+</div>
+{% endblock %}
