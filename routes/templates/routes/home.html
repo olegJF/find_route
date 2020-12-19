@@ -12,7 +12,12 @@
                 из г. {{ cities.from_city }} в г.{{ cities.to_city }} </h3>
         <br>
             {% for route in routes %}
-
+                <form action="{% url 'add_route'%}" method="post"> {% csrf_token %}
+                    <input type="hidden" name="from_city" value="{{ cities.from_city.id }}">
+                    <input type="hidden" name="to_city" value="{{ cities.to_city.id }}">
+                    <input type="hidden" name="total_time" value="{{ route.total_time }}">
+                    <input type="hidden" name="trains"
+                           value="{% for train in route.trains%}{{ train.id }},{% endfor %}">
                 {% if forloop.first %}<h4>Самый короткий маршрут</h4> {% endif %}
                 <h5>Время в пути  {{ route.total_time }}</h5>
                 <table class="table">
@@ -34,6 +39,8 @@
                   {% endfor %}
                   </tbody>
                 </table>
+                    <button type="submit" class="btn btn-success">Сохранить</button>
+                </form>
         <br><br>
 
             {% endfor %}
