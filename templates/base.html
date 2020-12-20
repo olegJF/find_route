@@ -3,7 +3,7 @@
 {% url 'trains:home' as trains_home_url%}
 {% url 'trains:create' as trains_create_url%}
 {% url 'list' as route_list%}
-{% url 'detail' as route_detail%}
+
 
 <!doctype html>
 <html lang="en">
@@ -32,8 +32,7 @@
             <a class="nav-link" href="{% url 'trains:home'%}">Поезда</a>
           </li>
           <li class="nav-item
-           {% if request.path == route_list%} active {% endif %}
-            ">
+           {% if request.path == route_list%} active {% endif %}">
             <a class="nav-link" href="{% url 'list'%}">Маршруты</a>
           </li>
 
