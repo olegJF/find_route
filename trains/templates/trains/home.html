@@ -22,6 +22,7 @@
                 <td>{{object.from_city}}</td>
                 <td>{{object.to_city}}</td>
                 <td>{{object.travel_time}}</td>
+                {% if user.is_authenticated%}
                 <td>
                     <a href="{% url 'trains:update' pk=object.pk%}">
                         <button type="submit" class="btn btn-primary">Редактировать</button>
@@ -31,6 +32,10 @@
                         <button type="submit" class="btn btn-danger">Удалить</button>
                     </a>
                 </td>
+                {% else %}
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                {% endif %}
 
             </tr>
 

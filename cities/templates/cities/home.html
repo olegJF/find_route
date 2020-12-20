@@ -11,6 +11,7 @@
                 <td>
                     <a href="{% url 'cities:detail' pk=object.pk%}">{{object.name}}</a>
                 </td>
+                {% if user.is_authenticated%}
                 <td>
                     <a href="{% url 'cities:update' pk=object.pk%}">
                         <button type="submit" class="btn btn-primary">Редактировать</button>
@@ -21,6 +22,10 @@
                         <button type="submit" class="btn btn-danger">Удалить</button>
                     </a>
                 </td>
+                {% else %}
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                {% endif %}
             </tr>
 
 
@@ -54,6 +59,7 @@
     </li>
   </ul>
 </nav>
+{% if user.is_authenticated%}
 <div class="row">
     <div class="col-md-4">
         <form action="{% url 'cities:create' %}" method="post"> {% csrf_token %}
@@ -62,5 +68,5 @@
 </form>
     </div>
 </div>
-
+{% endif %}
 {% endblock %}

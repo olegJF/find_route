@@ -24,7 +24,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item {% if request.path == cities_home_url%}active {% endif %}	">
             <a class="nav-link" href="{% url 'cities:home'%}">Города </a>
           </li>
@@ -35,7 +35,7 @@
            {% if request.path == route_list%} active {% endif %}">
             <a class="nav-link" href="{% url 'list'%}">Маршруты</a>
           </li>
-
+          {% if user.is_authenticated%}
           <li class="nav-item dropdown
              {% if request.path == cities_create_url or request.path == trains_create_url %}
               active
@@ -44,11 +44,18 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Добавить
             </a>
+
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="{% url 'cities:create'%}">Новый город</a>
               <a class="dropdown-item" href="{% url 'trains:create'%}">Новый поезд</a>
             </div>
+
           </li>
+          {% else %}
+            <li class="nav-item ">
+            <a class="nav-link disabled" href="">Добавить</a>
+          </li>
+            {% endif %}
           {% if user.is_authenticated%}
           <li class="nav-item ">
             <a class="nav-link" href="{% url 'accounts:logout'%}">Выйти</a>
