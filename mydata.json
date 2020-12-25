@@ -3,63 +3,63 @@
   "model": "cities.city",
   "pk": 2,
   "fields": {
-    "name": "Мадрид"
+    "name": "РњР°РґСЂРёРґ"
   }
 },
 {
   "model": "cities.city",
   "pk": 3,
   "fields": {
-    "name": "Варшава"
+    "name": "Р’Р°СЂС€Р°РІР°"
   }
 },
 {
   "model": "cities.city",
   "pk": 4,
   "fields": {
-    "name": "Хельсинки"
+    "name": "РҐРµР»СЊСЃРёРЅРєРё"
   }
 },
 {
   "model": "cities.city",
   "pk": 5,
   "fields": {
-    "name": "Лондон"
+    "name": "Р›РѕРЅРґРѕРЅ"
   }
 },
 {
   "model": "cities.city",
   "pk": 7,
   "fields": {
-    "name": "Краков"
+    "name": "РљСЂР°РєРѕРІ"
   }
 },
 {
   "model": "cities.city",
   "pk": 9,
   "fields": {
-    "name": "Гамбург"
+    "name": "Р“Р°РјР±СѓСЂРі"
   }
 },
 {
   "model": "cities.city",
   "pk": 13,
   "fields": {
-    "name": "Вена"
+    "name": "Р’РµРЅР°"
   }
 },
 {
   "model": "cities.city",
   "pk": 16,
   "fields": {
-    "name": "Берлин"
+    "name": "Р‘РµСЂР»РёРЅ"
   }
 },
 {
   "model": "cities.city",
   "pk": 17,
   "fields": {
-    "name": "Рим"
+    "name": "Р РёРј"
   }
 },
 {
