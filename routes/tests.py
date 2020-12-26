@@ -5,6 +5,7 @@ from django.urls import reverse
 from cities.models import City
 from trains.models import Train
 from routes import views as routes_view
+from routes.utils import dfs_paths, get_graph
 from cities import views as cities_view
 
 
@@ -77,4 +78,10 @@ class AllTestsCase(TestCase):
         self.assertTemplateUsed(response, template_name='cities/detail.html')
         self.assertEqual(response.resolver_match.func.__name__,
                          cities_view.CityDetailView.as_view().__name__)
+
+    def test_find_all_routes(self):
+        qs = Train.objects.all()
+        graph = get_graph(qs)
+        all_routes = list(dfs_paths(graph, self.city_A.id, self.city_E.id))
+        self.assertEqual(len(all_routes), 4)
 
